@@ -60,11 +60,11 @@ for item in d:
         if len(topresult) == 1:
             topresult = topresult[0]
             if 'dbpediaLabel' in topresult['_source']:
-                entpredarr.append({'label':pred['label'],'embedding':response,'class':'entity', 'esscore': float(topresult['_score']), 'fuzzratio': fuzz.ratio(pred['label'], topresult['_source']['dbpediaLabel']),'fuzzpartialratio': fuzz.partial_ratio(pred['label'], topresult['_source']['dbpediaLabel']), 'fuzztokensortratio': fuzz.token_sort_ratio(pred['label'], topresult['_source']['dbpediaLabel']), 'eslabel': topresult['_source']['dbpediaLabel']})
+                entpredarr.append({'label':pred['label'],'embedding':response,'class':'predicate', 'esscore': float(topresult['_score']), 'fuzzratio': fuzz.ratio(pred['label'], topresult['_source']['dbpediaLabel']),'fuzzpartialratio': fuzz.partial_ratio(pred['label'], topresult['_source']['dbpediaLabel']), 'fuzztokensortratio': fuzz.token_sort_ratio(pred['label'], topresult['_source']['dbpediaLabel']), 'eslabel': topresult['_source']['dbpediaLabel']})
             if 'wikidataLabel' in topresult['_source']:
-                entpredarr.append({'label':pred['label'],'embedding':response,'class':'entity', 'esscore': float(topresult['_score']), 'fuzzratio': fuzz.ratio(pred['label'], topresult['_source']['wikidataLabel']),'fuzzpartialratio': fuzz.partial_ratio(pred['label'], topresult['_source']['wikidataLabel']), 'fuzztokensortratio': fuzz.token_sort_ratio(pred['label'], topresult['_source']['wikidataLabel']), 'eslabel': topresult['_source']['wikidataLabel']})
+                entpredarr.append({'label':pred['label'],'embedding':response,'class':'predicate', 'esscore': float(topresult['_score']), 'fuzzratio': fuzz.ratio(pred['label'], topresult['_source']['wikidataLabel']),'fuzzpartialratio': fuzz.partial_ratio(pred['label'], topresult['_source']['wikidataLabel']), 'fuzztokensortratio': fuzz.token_sort_ratio(pred['label'], topresult['_source']['wikidataLabel']), 'eslabel': topresult['_source']['wikidataLabel']})
         else:
-            entpredarr.append({'label':pred['label'],'embedding':response,'class':'entity', 'esscore': 0, 'fuzzratio': 0,'fuzzpartialratio': 0, 'fuzztokensortratio': 0, 'eslabel': ''})
+            entpredarr.append({'label':pred['label'],'embedding':response,'class':'predicate', 'esscore': 0, 'fuzzratio': 0,'fuzzpartialratio': 0, 'fuzztokensortratio': 0, 'eslabel': ''})
 
 
         if pred['label'].lower() != pred['label']:
@@ -78,11 +78,11 @@ for item in d:
             if len(topresult) == 1:
                 topresult = topresult[0]
                 if 'dbpediaLabel' in topresult['_source']:
-                    entpredarr.append({'label':pred['label'].lower(),'embedding':response,'class':'entity', 'esscore': float(topresult['_score']), 'fuzzratio': fuzz.ratio(pred['label'].lower(), topresult['_source']['dbpediaLabel']),'fuzzpartialratio': fuzz.partial_ratio(pred['label'].lower(), topresult['_source']['dbpediaLabel']), 'fuzztokensortratio': fuzz.token_sort_ratio(pred['label'].lower(), topresult['_source']['dbpediaLabel']), 'eslabel': topresult['_source']['dbpediaLabel']})
+                    entpredarr.append({'label':pred['label'].lower(),'embedding':response,'class':'predicate', 'esscore': float(topresult['_score']), 'fuzzratio': fuzz.ratio(pred['label'].lower(), topresult['_source']['dbpediaLabel']),'fuzzpartialratio': fuzz.partial_ratio(pred['label'].lower(), topresult['_source']['dbpediaLabel']), 'fuzztokensortratio': fuzz.token_sort_ratio(pred['label'].lower(), topresult['_source']['dbpediaLabel']), 'eslabel': topresult['_source']['dbpediaLabel']})
                 if 'wikidataLabel' in topresult['_source']:
-                    entpredarr.append({'label':pred['label'].lower(),'embedding':response,'class':'entity', 'esscore': float(topresult['_score']), 'fuzzratio': fuzz.ratio(pred['label'].lower(), topresult['_source']['wikidataLabel']),'fuzzpartialratio': fuzz.partial_ratio(pred['label'].lower(), topresult['_source']['wikidataLabel']), 'fuzztokensortratio': fuzz.token_sort_ratio(pred['label'].lower(), topresult['_source']['wikidataLabel']), 'eslabel': topresult['_source']['wikidataLabel']})
+                    entpredarr.append({'label':pred['label'].lower(),'embedding':response,'class':'predicate', 'esscore': float(topresult['_score']), 'fuzzratio': fuzz.ratio(pred['label'].lower(), topresult['_source']['wikidataLabel']),'fuzzpartialratio': fuzz.partial_ratio(pred['label'].lower(), topresult['_source']['wikidataLabel']), 'fuzztokensortratio': fuzz.token_sort_ratio(pred['label'].lower(), topresult['_source']['wikidataLabel']), 'eslabel': topresult['_source']['wikidataLabel']})
             else:
-                entpredarr.append({'label':pred['label'].lower(),'embedding':response,'class':'entity', 'esscore': 0, 'fuzzratio': 0,'fuzzpartialratio': 0, 'fuzztokensortratio': 0, 'eslabel': ''})
+                entpredarr.append({'label':pred['label'].lower(),'embedding':response,'class':'predicate', 'esscore': 0, 'fuzzratio': 0,'fuzzpartialratio': 0, 'fuzztokensortratio': 0, 'eslabel': ''})
        
 f = open('traintest.json','w')
 f.write(json.dumps(entpredarr))
