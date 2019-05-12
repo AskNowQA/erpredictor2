@@ -8,12 +8,12 @@ alldata = []
 
 for item in d:
     if item['class']=='entity':
-        xy = item['embedding'] + [item['esscore']] + [item['fuzzratio']] + [item['fuzzpartialratio']] + [item['fuzztokensortratio']] + [0]
+        xy = item['embedding'] + [item['esscore']] + [item['fuzzratio']/100.0] + [item['fuzzpartialratio']/100.0] + [item['fuzztokensortratio']/100.0] + [0]
         alldata.append(xy)
     else:
-        xy = item['embedding'] + [item['esscore']] + [item['fuzzratio']] + [item['fuzzpartialratio']] + [item['fuzztokensortratio']] + [1]
+        xy = item['embedding'] + [item['esscore']] + [item['fuzzratio']/100.0] + [item['fuzzpartialratio']/100.0] + [item['fuzztokensortratio']/100.0] + [1]
         print "pred"
         alldata.append(xy)
 
 tensor = torch.FloatTensor(alldata)
-torch.save(tensor,'traintest.pt')
+torch.save(tensor,'traintest_normalised.pt')
