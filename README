@@ -1,0 +1,5 @@
+Detects whether a given phrase is an entity or relation, irrespective of upper or lower case characters.
+
+Install dependencies based on requirements.txt
+
+Run train.py.
