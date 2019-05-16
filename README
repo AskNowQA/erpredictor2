@@ -24,4 +24,4 @@ The fasttext embedding is a 300 length vector. From the elasticsearch results we
 3) fuzzwuzz partial ratio of chunk with top ES match 
 4) fuzzwuzz token sort ratio with top ES match. 
 
-We concatenate all 4 values with the 300 length vector, hence we have a 304 length input vector. We pass this through a 2 layer neural network which has 2 outputs: entity and relation.
+We concatenate all 4 values with the 300 length vector, hence we have a 304 length input vector. We pass this through a 2 layer neural network which has 2 outputs: entity and relation. We achieve 96% accuracy on 80:20 split of lcquad dataset.
