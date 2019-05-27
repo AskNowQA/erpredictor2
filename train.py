@@ -5,9 +5,9 @@ import sys,os,json
 
 n_in, n_h, n_out = 304, 200, 2
 
-alldata = torch.load('traintest_normalised.pt')
+_alldata = torch.load('traintest_normalised.pt')
+alldata = _alldata[torch.randperm(_alldata.size()[0])]
 x,y = torch.split(alldata, [304,1], dim=1)
-x = x.cuda()
 y = y.long().view(-1)
 #x = x.t()
 #y = y.t()
